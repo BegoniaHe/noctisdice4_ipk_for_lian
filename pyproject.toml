@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "夜骰核心组件"
 authors = [
     {name = "fu050409",email = "fu050409@163.com"},
+    {name = "BegoniaHe",email = "tianyihebegonia1005@gmail.com"}
 ]
 dependencies = [
     "infini>2.1.0",

@@ -15,31 +15,32 @@ register = Register()
 
 register.register_textevent(
     "dg.bot",
-    "NoctisDice v{{ version }} by Noctisynth [Python {{ py_version }} For Infini {{ infini_version }}]\n"
+    "SDice v{{sdice_version}} based on NoctisDice v{{ version }} by Noctisynth [Python {{ py_version }} For Infini {{ infini_version }}]\n"
     "{{ welcome }}",
 )
-register.register_textevent("dg.bot.on", "指令限制已撤销.")
-register.register_textevent("dg.bot.off", "指令限制已开启.")
+register.register_textevent("dg.bot.on", "一个成熟的调查员应当学会自己当骰娘.")
+register.register_textevent("dg.bot.off", "好了，我走了.")
 register.register_textevent(
     "dg.bot.status",
-    "DicerGirl {{ dg_version }}, {{ '正常运行' if status else '指令限制' }}\n"
+    "DicerGirl {{ dg_version }}, {{ '开启' if status else '关闭' }}\n"
     "骰娘尊名: {{ bot_name }}\n"
     "操作系统: {{ system_name }}\n"
     "CPU 核心: {{ cpu_count }} 核心\n"
     "Python 版本: {{ py_version }}\n"
     "Infini 版本: {{ infini_version }}\n"
+    "SDice 版本: {{ sdice_version }}\n"
     "系统内存占用: {{ memi_rss }}MB/{{ memi_total }}GB\n"
-    "漏洞检测模式: off",
+    "漏洞检测模式: 你猜",
 )
 register.register_textevent(
-    "dg.bot.name", "倒是好生有趣的名字, 以后我就是“{{ name }}”了."
+    "dg.bot.name", "好好好, 以后我就叫“{{ name }}”了."
 )
 
 register.register_textevent(
-    "dg.st", "[{{ card_name }}]录卡完成, 成功录入属性{{ count }}个."
+    "dg.st", "收到, [{{ card_name }}]录卡完成, 成功录入属性{{ count }}个."
 )
 register.register_textevent(
-    "dg.st.name", "[{{ card_name }}]角色被命名为[{{ name }}], 新的诗篇就要被奏响了"
+    "dg.st.name", "哦? [{{ card_name }}]的新名字? 好吧, 莲记下了. //角色被命名为[{{ name }}]."
 )
 register.register_textevent(
     "dg.st.init",
@@ -47,20 +48,20 @@ register.register_textevent(
 )
 register.register_textevent(
     "dg.st.card",
-    "[{{ card_name }}]人物卡已录入:\n{{ meta }}\n{{ basic }}",
+    "[{{ card_name }}]人物卡录入完成:\n{{ meta }}\n{{ basic }}",
 )
 register.register_textevent(
     "dg.st.not_found",
-    "[{{ card_name }}]未查找到缓存人物卡.",
+    "www, 没有找到[{{ card_name }}]缓存人物卡.",
 )
 register.register_textevent(
-    "dg.st.failed", "[{{ card_name }}]录卡失败, 请确保录入数据成对存在."
+    "dg.st.failed", "唔... 你写了个啥? 咱没太看懂# 歪脑袋 //[{{ card_name }}]录卡失败, 请确保录入数据成对存在."
 )
 
 
 register.register_textevent(
     "dg.show",
-    "[{{ card_name }}]人物卡数据:\n"
+    "让莲看看[{{ card_name }}]人物卡数据. 唔, 找到啦:\n"
     "{% for card in cards %}"
     "{% if card.sequence is defined %}序列[{{ card.sequence }}]卡:{% endif %}"
     "{% if card.meta is defined %}{{ card.meta }}\n{% endif %}"
@@ -73,7 +74,7 @@ register.register_textevent(
 )
 register.register_textevent(
     "dg.show.not_found",
-    "[{{ card_name }}]查询的人物卡数据不存在.",
+    "你在开玩笑吧, [{{ card_name }}]查询的人物卡数据不存在.",
 )
 
 register.register_textevent(
@@ -151,9 +152,10 @@ register.register_textevent(
 
 
 register.register_variable(
-    "welcome", "欢迎使用 Noctisynth DicerGirl, 使用`.help 指令`查看指令帮助."
+    "welcome", "欢迎使用 Noctisynth DicerGirl, 我是莲, 请使用`.help 指令`查看指令帮助."
 )
 register.register_variable("version", "4.0.0-rc.4")
+register.register_variable("sdice_version", "TEST_VERSION_0.1.0")
 register.register_variable("py_version", platform.python_version())
 register.register_variable("infini_version", version("infini"))
 register.register_variable("cpu_count", psutil.cpu_count())
